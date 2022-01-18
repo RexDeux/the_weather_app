@@ -58,10 +58,14 @@
                                 <div class="content">
                                     <p>
                                         <span class="title">{{ weather.city }}</span>
+                                        <br> {{     weather.zone }}
                                         <br>
                                         <span class="subtitle">{{ weather.temperature }}º C</span>
+                                        <br>
+                                        <span class="subtitle">Feels like {{ weather.temperature2 }}º C</span>
                                         <br> {{     weather.description }}
-                                        <br> {{     weather.coordinate }}
+                                        <br> lon {{     weather.coordinate1 }}
+                                        <br> lat {{     weather.coordinate2 }}
                                     </p>
                                 </div>
                                 <div class="media-right"

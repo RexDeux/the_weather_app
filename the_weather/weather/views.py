@@ -52,10 +52,13 @@ def index(request):
         city_weather = {
             'city': city.name,
             'temperature': a['main']['temp'],
+            'temperature2': a['main']['feels_like'],
             # 'coord' : city_weather['lat']['lon'],
             'description': a['weather'][0]['description'],
             'icon': a['weather'][0]['icon'],
-            'coordinate': a['coord']['lon'] + '' + a['coord']['lat']
+            'coordinate1': a['coord']['lon'],
+            'coordinate2': a['coord']['lat'],
+            'zone': a['sys']['country']
 
         }
 
