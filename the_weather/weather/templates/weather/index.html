@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         {% if message %}
-                            <div class="notification {{ message_class }}">{{ message }}<button class="del-msg delete" onclick="document.getElementsByClassName('notification')[0].style.display='none'"></button></div>           
+                            <div class="notification {{ message_class }}">{{ message }}</div>           
                         {% endif %}
                         <a class="button is-danger is-outlined is-rounded"  href="{% url 'delete_everything' %}" role="button">
                         <span>Delete all Cities</span>
@@ -72,11 +72,11 @@
                                         <br>
                                         <span class="subtitle">{{ city_weather.temperature }}º C</span>
                                         <br>
+                                        <span class="subtitle">Description: {{     city_weather.description }}</span>
+                                        <br> 
                                         <span class="subtitle">Feels like {{ city_weather.temperature2 }}º C</span>
                                         <br>
-                                        <span class="subtitle"{{     city_weather.description }}</span>
-                                        <br> 
-                                        <span class="subtitle"Coordinates [{{     city_weather.coordinate1 }}, {{     city_weather.coordinate2 }}]</span>
+                                        <span class="subtitle">Coordinates [{{     city_weather.coordinate1 }}, {{     city_weather.coordinate2 }}]</span>
                                     </p>
                                 </div>
                             <div class="media-right">

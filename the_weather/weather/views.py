@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 from .models import City
 from .forms import CityForm
@@ -16,14 +16,14 @@ def index(request):
     weather_data = []
     message = ''
     message_class = ''
+    err_msg = ''
     #print(city_weather)
 
     if request.method == 'POST':
         form = CityForm(request.POST)
-        form.save()
 
         if form.is_valid():
-            new_city = form.cleaned_data['name']
+            new_city = form.cleaned_data['name'].capitalize()
             existing_city_count = City.objects.filter(name=new_city).count()
 
             if existing_city_count == 0:
