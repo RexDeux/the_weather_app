@@ -10,14 +10,14 @@ def index(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=a2290f5132b80143df242aa1fe7a093d'
 
     city = 'Braga'
-    city_weather = requests.get(url.format(city)).json()
+    #city_weather = requests.get(url.format(city)).json()
     cities = City.objects.all()
 
     weather_data = []
     message = ''
     message_class = ''
-    print(city_weather)
-    
+    #print(city_weather)
+
     if request.method == 'POST':
         form = CityForm(request.POST)
         form.save()
@@ -53,7 +53,6 @@ def index(request):
             'city': city.name,
             'temperature': a['main']['temp'],
             'temperature2': a['main']['feels_like'],
-            # 'coord' : city_weather['lat']['lon'],
             'description': a['weather'][0]['description'],
             'icon': a['weather'][0]['icon'],
             'coordinate1': a['coord']['lon'],
@@ -64,7 +63,8 @@ def index(request):
 
         weather_data.append(city_weather)
 
-    context = {'weather_data': weather_data, 'form': form, 'message' : message, 'message_class' : message_class}
+    context = {'weather_data': weather_data, 'form': form,
+               'message': message, 'message_class': message_class}
 
     return render(request, 'weather/index.html', context)
 
@@ -73,3 +73,12 @@ def delete_city(request, city_name):
     City.objects.get(name=city_name).delete()
 
     return redirect('home')
+
+
+def delete_everything(request):
+    cities = City.objects.all()
+    for city in cities:
+        City.objects.get(name=city).delete()
+    return redirect('home')
+
+
