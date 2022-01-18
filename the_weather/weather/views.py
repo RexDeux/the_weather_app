@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 import requests
 from .models import City
 from .forms import CityForm
-
-
+from .gmaps import Google
 # @crf_exempt
 # Create your views here.
 def index(request):
