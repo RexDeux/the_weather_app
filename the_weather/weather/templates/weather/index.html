@@ -33,6 +33,10 @@
                                 </button>
                             </div>
                         </div>
+                        {% if message %}
+                            <div class="notification {{ message_class }}">{{ message }}<button class="del-msg delete" onclick="document.getElementsByClassName('notification')[0].style.display='none'"></button></div>
+                            
+                        {% endif %}
                     </form>
                 </div>
             </div>
@@ -57,8 +61,10 @@
                                         <br>
                                         <span class="subtitle">{{ weather.temperature }}º C</span>
                                         <br> {{     weather.description }}
+                                        <br> {{     weather.coordinate }}
                                     </p>
                                 </div>
+                                <div class="media-right"
                             </div>
                         </article>
                     </div>
