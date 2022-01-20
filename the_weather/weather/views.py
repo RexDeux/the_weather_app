@@ -3,6 +3,8 @@ import requests
 from .models import City
 from .forms import CityForm
 from .gmaps import Google
+import googlemaps
+
 # @crf_exempt
 # Create your views here.
 def index(request):
@@ -80,4 +82,15 @@ def delete_everything(request):
         City.objects.get(name=city).delete()
     return redirect('home')
 
+def maps(city_name):
+    url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBqm77Uo3KIONlVCMM20sNwjAnNnIhSmeo&callback=initMap'
 
+    maps_data = []
+    city = []
+    a = requests.get(url.format(city)).json()
+    geocode_result = gmaps.geocode('R. Dom Paio Mendes, 4700-424 Braga')
+    reverse_geocode_result = gmaps.reverse_geocode((41.549935, -8.427262))
+
+    maps_data.append()
+               
+    return render(request, 'weather/maps.html')
